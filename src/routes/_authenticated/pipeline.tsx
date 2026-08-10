@@ -8,7 +8,7 @@ import { Plus, Star } from "lucide-react";
 import { NewCandidateDialog } from "@/components/NewCandidateDialog";
 
 export const Route = createFileRoute("/_authenticated/pipeline")({
-  head: () => ({ meta: [{ title: "Pipeline — Talently" }] }),
+  head: () => ({ meta: [{ title: "Pipeline — ClusterHire" }] }),
   component: Pipeline,
 });
 

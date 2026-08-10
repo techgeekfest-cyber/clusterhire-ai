@@ -6,7 +6,7 @@ import { STAGES, type Stage } from "@/lib/constants";
 import { Download, Upload } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/import")({
-  head: () => ({ meta: [{ title: "Import — Talently" }] }),
+  head: () => ({ meta: [{ title: "Import — ClusterHire" }] }),
   component: ImportPage,
 });
 
@@ -97,7 +97,7 @@ function ImportPage() {
   const downloadTemplate = () => {
     const blob = new Blob([TEMPLATE], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement("a"); a.href = url; a.download = "talently-template.csv"; a.click();
+    const a = document.createElement("a"); a.href = url; a.download = "clusterhire-template.csv"; a.click();
     URL.revokeObjectURL(url);
   };
 
