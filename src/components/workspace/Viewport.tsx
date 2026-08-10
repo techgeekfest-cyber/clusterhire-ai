@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { useEffect, useRef } from "react";
+import { ModuleRenderer } from "./modules/ModuleRenderer";
+import type { ModuleSpec } from "@/lib/workspace/intent";
 
 export type ChatTurn = {
   id: string;
@@ -8,7 +10,9 @@ export type ChatTurn = {
   reply: string;
   pending: boolean;
   createdAt: number;
+  module?: ModuleSpec | null;
 };
+
 
 const spring = { type: "spring" as const, stiffness: 260, damping: 28, mass: 0.8 };
 
@@ -104,22 +108,28 @@ export function Viewport({ turns }: { turns: ChatTurn[] }) {
                 layout
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="mt-3 max-w-[92%]"
+                className="mt-3 max-w-[92%] space-y-3"
               >
-                {turn.pending && !turn.reply ? (
+                {turn.pending && !turn.reply && !turn.module ? (
                   <ThinkingDots />
                 ) : (
-                  <div className="prose prose-sm max-w-none text-foreground prose-headings:text-foreground prose-strong:text-foreground prose-a:text-[#4B73FF] prose-code:text-foreground prose-code:bg-secondary prose-code:rounded prose-code:px-1 prose-code:py-0.5 prose-code:before:content-none prose-code:after:content-none">
-                    <ReactMarkdown
-                      disallowedElements={DISALLOWED_ELEMENTS}
-                      unwrapDisallowed
-                      urlTransform={safeUrlTransform}
-                    >
-                      {turn.reply}
-                    </ReactMarkdown>
-                  </div>
+                  <>
+                    {turn.reply && (
+                      <div className="prose prose-sm max-w-none text-foreground prose-headings:text-foreground prose-strong:text-foreground prose-a:text-[#4B73FF] prose-code:text-foreground prose-code:bg-secondary prose-code:rounded prose-code:px-1 prose-code:py-0.5 prose-code:before:content-none prose-code:after:content-none">
+                        <ReactMarkdown
+                          disallowedElements={DISALLOWED_ELEMENTS}
+                          unwrapDisallowed
+                          urlTransform={safeUrlTransform}
+                        >
+                          {turn.reply}
+                        </ReactMarkdown>
+                      </div>
+                    )}
+                    {turn.module && <ModuleRenderer spec={turn.module} />}
+                  </>
                 )}
               </motion.div>
+
             </motion.div>
           ))}
         </AnimatePresence>

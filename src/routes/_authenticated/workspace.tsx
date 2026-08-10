@@ -4,6 +4,7 @@ import { LayoutGroup } from "framer-motion";
 import { Viewport, type ChatTurn } from "@/components/workspace/Viewport";
 import { AgentPrompt } from "@/components/workspace/AgentPrompt";
 import { askAgent } from "@/lib/workspace/agent.functions";
+import { parseSlashCommand, type ModuleSpec } from "@/lib/workspace/intent";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 
@@ -14,6 +15,23 @@ export const Route = createFileRoute("/_authenticated/workspace")({
 
 function makeId() {
   return "t_" + Math.random().toString(36).slice(2, 10);
+}
+
+function moduleIntro(spec: ModuleSpec): string {
+  switch (spec.kind) {
+    case "candidate":
+      return spec.query ? `Here's what I have on **${spec.query}**.` : "Here are your recent candidates.";
+    case "requisition":
+      return spec.query ? `Requisition **${spec.query}**.` : "Create or edit a requisition below.";
+    case "graph":
+      return "Your live pipeline graph — click a stage to inspect it.";
+    case "analytics":
+      return "Here's the chart.";
+    case "help":
+      return "";
+    default:
+      return "";
+  }
 }
 
 function Workspace() {
@@ -27,6 +45,24 @@ function Workspace() {
       if (!utterance || busy) return;
 
       const turnId = makeId();
+
+      // Slash commands render an interactive module inline — no model call.
+      if (utterance.startsWith("/")) {
+        const spec = parseSlashCommand(utterance) ?? { kind: "help" as const };
+        setTurns((prev) => [
+          ...prev,
+          {
+            id: turnId,
+            utterance,
+            reply: moduleIntro(spec),
+            pending: false,
+            createdAt: Date.now(),
+            module: spec,
+          },
+        ]);
+        return;
+      }
+
       setTurns((prev) => [
         ...prev,
         { id: turnId, utterance, reply: "", pending: true, createdAt: Date.now() },
@@ -56,6 +92,7 @@ function Workspace() {
     },
     [ask, busy, turns],
   );
+
 
   return (
     <LayoutGroup>
