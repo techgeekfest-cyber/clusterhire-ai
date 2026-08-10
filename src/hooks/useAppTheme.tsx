@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, useCallback, type ReactNode } from "react";
 
 export type Theme = "light" | "dark";
-const KEY = "talently-app-theme";
+const KEY = "clusterhire-app-theme";
 
 function readTheme(): Theme {
   if (typeof window === "undefined") return "dark";
