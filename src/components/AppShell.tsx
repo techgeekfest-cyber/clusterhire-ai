@@ -57,12 +57,12 @@ function RightSidebar() {
     <Sidebar side="left" collapsible="icon">
       <SidebarHeader className="border-b border-border">
         <Link to="/pipeline" className={collapsed ? "flex items-center justify-center py-1.5" : "flex items-center gap-2 px-2 py-1.5"}>
-          <div className={`grid shrink-0 place-items-center rounded-xl bg-white text-[#1B1B1B] font-bold border border-border ${collapsed ? "h-7 w-7 text-sm" : "h-8 w-8"}`}>
-            T
+          <div className={`grid shrink-0 place-items-center rounded-xl bg-white text-[#0f1b3d] font-bold border border-border ${collapsed ? "h-7 w-7 text-sm" : "h-8 w-8"}`}>
+            C
           </div>
           {!collapsed && (
             <span className="font-display text-lg font-bold tracking-tight text-foreground">
-              Talently
+              ClusterHire
             </span>
           )}
         </Link>
@@ -114,7 +114,7 @@ function ShellInner({ children }: { children: ReactNode }) {
             <header className="sticky top-0 z-30 flex h-[61px] items-center gap-2 border-b border-border bg-background/85 px-4 backdrop-blur">
               <SidebarTrigger className="text-foreground" />
               <span className="font-display text-sm font-semibold tracking-tight text-muted-foreground">
-                Talently
+                ClusterHire
               </span>
             </header>
             <main className="flex-1 mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
