@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { useEffect, useRef } from "react";
+import { ModuleRenderer } from "./modules/ModuleRenderer";
+import type { ModuleSpec } from "@/lib/workspace/intent";
 
 export type ChatTurn = {
   id: string;
@@ -8,7 +10,9 @@ export type ChatTurn = {
   reply: string;
   pending: boolean;
   createdAt: number;
+  module?: ModuleSpec | null;
 };
+
 
 const spring = { type: "spring" as const, stiffness: 260, damping: 28, mass: 0.8 };
 
