@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { Download } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/export")({
-  head: () => ({ meta: [{ title: "Export — Talently" }] }),
+  head: () => ({ meta: [{ title: "Export — ClusterHire" }] }),
   component: ExportPage,
 });
 
@@ -36,13 +36,13 @@ function ExportPage() {
       source: c.source, stage: c.stage, rating: c.rating,
       notes: c.notes, created_at: c.created_at, last_activity_at: c.last_activity_at,
     }));
-    download("talently-candidates.csv", toCSV(rows, ["name","email","phone","requisition_title","source","stage","rating","notes","created_at","last_activity_at"]));
+    download("clusterhire-candidates.csv", toCSV(rows, ["name","email","phone","requisition_title","source","stage","rating","notes","created_at","last_activity_at"]));
   };
 
   const exportReqs = async () => {
     const { data, error } = await supabase.from("requisitions").select("*");
     if (error) { toast.error(error.message); return; }
-    download("talently-requisitions.csv", toCSV(data ?? [], ["title","department","hiring_manager","status","target_start_date","notes","created_at"]));
+    download("clusterhire-requisitions.csv", toCSV(data ?? [], ["title","department","hiring_manager","status","target_start_date","notes","created_at"]));
   };
 
   return (

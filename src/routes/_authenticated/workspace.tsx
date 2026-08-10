@@ -8,7 +8,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/workspace")({
-  head: () => ({ meta: [{ title: "Ask — Talently" }] }),
+  head: () => ({ meta: [{ title: "Ask — ClusterHire" }] }),
   component: Workspace,
 });
 

@@ -27,9 +27,9 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-40 px-3 pt-3 sm:px-6">
         <div className="glass mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-4 py-2.5">
           <Link to="/workspace" className="flex items-center gap-2 min-w-0">
-            <div className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground font-bold shadow-lg">T</div>
+            <div className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground font-bold shadow-lg">C</div>
             <div className="min-w-0">
-              <div className="font-display text-sm font-bold tracking-tight text-foreground truncate">Talently</div>
+              <div className="font-display text-sm font-bold tracking-tight text-foreground truncate">ClusterHire</div>
               <div className="text-[10px] uppercase tracking-widest text-muted-foreground">workspace</div>
             </div>
           </Link>

@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { ArrowLeft, Trash2 } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/candidates/$id")({
-  head: () => ({ meta: [{ title: "Candidate — Talently" }] }),
+  head: () => ({ meta: [{ title: "Candidate — ClusterHire" }] }),
   component: CandidateDetail,
 });
 

@@ -19,19 +19,19 @@ function Landing() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(135deg, rgba(27,27,27,0.88) 0%, rgba(27,27,27,0.72) 45%, rgba(75,115,255,0.55) 100%)",
+                "linear-gradient(135deg, rgba(15,27,61,0.90) 0%, rgba(15,27,61,0.74) 45%, rgba(59,111,160,0.55) 100%)",
             }}
           />
           <div className="relative">
             <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              Stop losing candidates in <span className="italic">spreadsheets and inboxes</span>.
+              Discover, evaluate, and hire the best — <span className="italic">with AI in your corner</span>.
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg text-white/80">
-              Talently gives your hiring team one shared pipeline. Track every candidate, every requisition, every stage — without another SaaS bill.
+              ClusterHire brings every candidate, requisition, and stage into one shared pipeline — with an AI assistant that helps you find, understand, and rank your talent so you can hire with confidence.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link to="/auth" className="btn-light rounded-xl px-6 py-3 text-sm font-semibold">Start now</Link>
-              
+              <Link to="/docs" className="rounded-xl px-6 py-3 text-sm font-semibold text-white/90 ring-1 ring-inset ring-white/30 hover:bg-white/10">See how it works</Link>
             </div>
           </div>
         </div>
@@ -42,9 +42,9 @@ function Landing() {
         <h2 className="font-display text-3xl font-bold text-center">How it works</h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           {[
-            { t: "1. Open a requisition", d: "Add the role, hiring manager, and target start date. Your open roles live in one place." },
-            { t: "2. Move candidates through stages", d: "Applied → Screen → Interview → Offer → Hired. Drag between columns on desktop or use the stage picker on mobile." },
-            { t: "3. See the funnel at a glance", d: "Analytics shows time-in-stage, conversion, and candidates by source — no dashboards to build." },
+            { t: "1. Open a requisition", d: "Define the role, hiring manager, and target start date. Your open roles live in one place, ready for candidates." },
+            { t: "2. Ask the AI", d: "Ask in plain English who's strongest, who's stuck, and which sources convert. The assistant reads your live pipeline and answers — no dashboards to build." },
+            { t: "3. Move and hire", d: "Advance candidates across stages — Applied → Screen → Interview → Offer → Hired — watch time-in-stage and conversion, and close the offer." },
           ].map((s) => (
             <div key={s.t} className="glass rounded-2xl p-6">
               <h3 className="font-display text-lg font-semibold">{s.t}</h3>

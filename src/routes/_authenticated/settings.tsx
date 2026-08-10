@@ -7,7 +7,7 @@ import { Linkedin, Briefcase, Globe, Sun, Moon } from "lucide-react";
 import { useAppTheme } from "@/hooks/useAppTheme";
 
 export const Route = createFileRoute("/_authenticated/settings")({
-  head: () => ({ meta: [{ title: "Settings — Talently" }] }),
+  head: () => ({ meta: [{ title: "Settings — ClusterHire" }] }),
   component: Settings,
 });
 

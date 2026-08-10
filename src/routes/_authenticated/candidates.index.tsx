@@ -8,9 +8,9 @@ import { Search } from "lucide-react";
 export const Route = createFileRoute("/_authenticated/candidates/")({
   head: () => ({
     meta: [
-      { title: "Candidates — Talently" },
+      { title: "Candidates — ClusterHire" },
       { name: "description", content: "Every candidate in your pipeline with their stage and the role they're up for." },
-      { property: "og:title", content: "Candidates — Talently" },
+      { property: "og:title", content: "Candidates — ClusterHire" },
       { property: "og:description", content: "Every candidate in your pipeline with their stage and the role they're up for." },
     ],
   }),
