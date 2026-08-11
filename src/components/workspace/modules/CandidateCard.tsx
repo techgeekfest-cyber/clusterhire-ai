@@ -18,13 +18,14 @@ type Cand = {
 };
 
 const STAGE_TONE: Record<Stage, string> = {
-  applied: "bg-secondary text-foreground border-border",
-  screen: "bg-[var(--primary)] text-foreground border-[var(--primary)]",
-  interview: "bg-[rgb(6_182_212_/_0.3)] text-signal border-[rgb(103_232_249_/_0.5)]",
-  offer: "bg-[rgb(250_204_21_/_0.25)] text-[#fef08a] border-[rgb(250_204_21_/_0.4)]",
-  hired: "bg-[rgb(34_197_94_/_0.3)] text-[#86efac] border-[rgb(34_197_94_/_0.45)]",
-  rejected: "bg-[rgb(239_68_68_/_0.25)] text-[#fca5a5] border-[rgb(239_68_68_/_0.4)]",
+  applied: "bg-secondary text-muted-foreground border-border",
+  screen: "bg-secondary text-foreground border-border",
+  interview: "bg-secondary text-foreground border-border",
+  offer: "chip-signal",
+  hired: "bg-signal text-[#0a0a0b] border-signal",
+  rejected: "bg-destructive/10 text-destructive border-destructive/30",
 };
+
 
 export function CandidateCard({
   query,
