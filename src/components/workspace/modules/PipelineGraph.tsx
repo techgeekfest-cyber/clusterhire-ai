@@ -50,8 +50,8 @@ export function PipelineGraph() {
         <svg viewBox={`0 0 ${width} ${height}`} className="w-full min-w-[560px]" role="img" aria-label="Pipeline stages graph">
           <defs>
             <linearGradient id="edge" x1="0" x2="1">
-              <stop offset="0%" stopColor="#4B73FF" stopOpacity="0.7" />
-              <stop offset="100%" stopColor="#FF0178" stopOpacity="0.7" />
+              <stop offset="0%" stopColor="#a3e635" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#71717a" stopOpacity="0.7" />
             </linearGradient>
             <linearGradient id="node" x1="0" x2="1" y1="0" y2="1">
               <stop offset="0%" stopColor="#a78bfa" />

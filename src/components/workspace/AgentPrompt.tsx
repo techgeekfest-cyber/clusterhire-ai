@@ -104,7 +104,7 @@ export function AgentPrompt({
                     i === highlight ? "bg-secondary" : "hover:bg-secondary"
                   }`}
                 >
-                  <span className="font-mono text-[#4B73FF]">{s.cmd}</span>
+                  <span className="font-mono text-signal">{s.cmd}</span>
                   <span className="truncate text-xs text-muted-foreground">{s.hint}</span>
                 </button>
               ))}

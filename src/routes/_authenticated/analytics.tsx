@@ -9,7 +9,7 @@ export const Route = createFileRoute("/_authenticated/analytics")({
   component: Analytics,
 });
 
-const COLORS = ["#7C3AED", "#06B6D4", "#A78BFA", "#67E8F9", "#4C1D95", "#C4B5FD"];
+const COLORS = ["#a3e635", "#e4e4e7", "#a1a1aa", "#71717a", "#52525b", "#3f3f46"];
 
 function Analytics() {
   const cands = useQuery({
@@ -75,7 +75,7 @@ function Analytics() {
                 <XAxis dataKey="stage" tick={{ fontSize: 11 }} />
                 <YAxis tick={{ fontSize: 11 }} allowDecimals={false} />
                 <Tooltip />
-                <Bar dataKey="count" fill="#7C3AED" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="count" fill="#a3e635" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -103,7 +103,7 @@ function Analytics() {
                 <XAxis dataKey="stage" tick={{ fontSize: 11 }} />
                 <YAxis tick={{ fontSize: 11 }} />
                 <Tooltip />
-                <Bar dataKey="days" fill="#06B6D4" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="days" fill="#71717a" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
