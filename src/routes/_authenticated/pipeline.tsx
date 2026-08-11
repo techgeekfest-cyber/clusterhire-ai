@@ -66,14 +66,14 @@ function Pipeline() {
       <div className="glass mt-4 flex flex-wrap items-center gap-3 rounded-2xl p-3 text-sm">
         <label className="flex min-w-0 items-center gap-2">
           <span className="text-muted-foreground">Requisition</span>
-          <select value={reqFilter} onChange={(e) => setReqFilter(e.target.value)} className="rounded-lg border border-input bg-white/70 px-2 py-1">
+          <select value={reqFilter} onChange={(e) => setReqFilter(e.target.value)} className="rounded-lg border border-input bg-secondary px-2 py-1">
             <option value="all">All</option>
             {reqs.data?.map((r) => <option key={r.id} value={r.id}>{r.title}</option>)}
           </select>
         </label>
         <label className="flex min-w-0 items-center gap-2">
           <span className="text-muted-foreground">Source</span>
-          <select value={srcFilter} onChange={(e) => setSrcFilter(e.target.value)} className="rounded-lg border border-input bg-white/70 px-2 py-1">
+          <select value={srcFilter} onChange={(e) => setSrcFilter(e.target.value)} className="rounded-lg border border-input bg-secondary px-2 py-1">
             <option value="all">All</option>
             {SOURCES.map((s) => <option key={s} value={s}>{s}</option>)}
           </select>
@@ -113,7 +113,7 @@ function Pipeline() {
                     <select
                       value={c.stage}
                       onChange={(e) => mutStage.mutate({ id: c.id, stage: e.target.value as Stage })}
-                      className="mt-2 w-full rounded-lg border border-input bg-white/70 px-2 py-1 text-xs"
+                      className="mt-2 w-full rounded-lg border border-input bg-secondary px-2 py-1 text-xs"
                     >
                       {STAGES.map((s) => <option key={s} value={s}>Move to {STAGE_LABEL[s]}</option>)}
                     </select>

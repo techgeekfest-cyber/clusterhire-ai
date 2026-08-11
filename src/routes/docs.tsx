@@ -10,7 +10,7 @@ function Docs() {
   return (
     <MarketingShell>
       <article className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-16">
-        <div className="glass rounded-3xl p-6 sm:p-10 prose prose-slate max-w-none">
+        <div className="glass rounded-3xl p-6 sm:p-10 prose prose-neutral dark:prose-invert max-w-none">
           <h1 className="font-display">ClusterHire docs</h1>
           <p className="lead">An AI-powered candidate discovery and ranking platform. Everything you need to find, evaluate, and hire a team without a $500/mo ATS.</p>
 

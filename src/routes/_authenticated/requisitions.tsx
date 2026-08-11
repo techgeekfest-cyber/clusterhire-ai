@@ -168,18 +168,18 @@ function ReqDialog({ open, onOpenChange, editing, onSaved }: { open: boolean; on
       <DialogContent>
         <DialogHeader><DialogTitle>{editing ? "Edit requisition" : "New requisition"}</DialogTitle></DialogHeader>
         <form onSubmit={submit} className="space-y-3">
-          <input required value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Role title" className="w-full rounded-xl border border-input bg-white/70 px-3 py-2 text-sm" />
+          <input required value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Role title" className="w-full rounded-xl border border-input bg-secondary px-3 py-2 text-sm" />
           <div className="grid grid-cols-2 gap-3">
-            <input value={department} onChange={(e) => setDepartment(e.target.value)} placeholder="Department" className="rounded-xl border border-input bg-white/70 px-3 py-2 text-sm" />
-            <input value={hiring_manager} onChange={(e) => setHM(e.target.value)} placeholder="Hiring manager" className="rounded-xl border border-input bg-white/70 px-3 py-2 text-sm" />
+            <input value={department} onChange={(e) => setDepartment(e.target.value)} placeholder="Department" className="rounded-xl border border-input bg-secondary px-3 py-2 text-sm" />
+            <input value={hiring_manager} onChange={(e) => setHM(e.target.value)} placeholder="Hiring manager" className="rounded-xl border border-input bg-secondary px-3 py-2 text-sm" />
           </div>
           <div className="grid grid-cols-2 gap-3">
-            <select value={status} onChange={(e) => setStatus(e.target.value as ReqStatus)} className="rounded-xl border border-input bg-white/70 px-3 py-2 text-sm">
+            <select value={status} onChange={(e) => setStatus(e.target.value as ReqStatus)} className="rounded-xl border border-input bg-secondary px-3 py-2 text-sm">
               {Object.entries(REQ_STATUS_LABEL).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
             </select>
-            <input type="date" value={target_start_date} onChange={(e) => setStart(e.target.value)} className="rounded-xl border border-input bg-white/70 px-3 py-2 text-sm" />
+            <input type="date" value={target_start_date} onChange={(e) => setStart(e.target.value)} className="rounded-xl border border-input bg-secondary px-3 py-2 text-sm" />
           </div>
-          <textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Notes" rows={3} className="w-full rounded-xl border border-input bg-white/70 px-3 py-2 text-sm" />
+          <textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Notes" rows={3} className="w-full rounded-xl border border-input bg-secondary px-3 py-2 text-sm" />
           <button disabled={saving} type="submit" className="btn-teal w-full rounded-xl px-4 py-2.5 text-sm font-semibold disabled:opacity-60">
             {saving ? "Saving…" : editing ? "Save" : "Create"}
           </button>
