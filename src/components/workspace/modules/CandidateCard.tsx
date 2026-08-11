@@ -143,7 +143,7 @@ export function CandidateCard({
                   disabled={isCurrent || move.isPending}
                   className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
                     isCurrent
-                      ? STAGE_TONE[s] + " ring-2 ring-white/40"
+                      ? STAGE_TONE[s] + " ring-1 ring-border"
                       : "bg-secondary border-border text-muted-foreground hover:bg-secondary hover:text-foreground"
                   }`}
                 >
@@ -165,7 +165,7 @@ export function CandidateCard({
             layout
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-4 flex items-center justify-between rounded-xl bg-[rgb(6_182_212_/_0.12)] border border-[rgb(103_232_249_/_0.35)] px-3 py-2 text-sm"
+            className="mt-4 flex items-center justify-between rounded-xl chip-signal px-3 py-2 text-sm"
           >
             <span className="text-foreground">Move {active.name.split(" ")[0]} to <b className="text-signal">{STAGE_LABEL[targetStage]}</b>?</span>
             <button

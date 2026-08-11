@@ -54,8 +54,8 @@ export function PipelineGraph() {
               <stop offset="100%" stopColor="#71717a" stopOpacity="0.7" />
             </linearGradient>
             <linearGradient id="node" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0%" stopColor="#a78bfa" />
-              <stop offset="100%" stopColor="#67e8f9" />
+              <stop offset="0%" stopColor="#27272a" />
+              <stop offset="100%" stopColor="#3f3f46" />
             </linearGradient>
           </defs>
 
@@ -78,7 +78,7 @@ export function PipelineGraph() {
           <motion.path
             d={`M ${positiveXs[0]} ${yBase} Q ${rejectedX} ${yBase + 40}, ${rejectedX} ${rejectedY - 30}`}
             fill="none"
-            stroke="#ef4444"
+            stroke="var(--muted-foreground)"
             strokeOpacity={0.5}
             strokeWidth={1.5}
             strokeDasharray="4 4"
@@ -98,14 +98,14 @@ export function PipelineGraph() {
                   cy={yBase}
                   r={r}
                   fill="url(#node)"
-                  stroke={isSelected ? "white" : "var(--border)"}
+                  stroke={isSelected ? "var(--signal)" : "var(--border)"}
                   strokeWidth={isSelected ? 3 : 1.5}
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   whileHover={{ scale: 1.08 }}
                   transition={{ delay: 0.1 + i * 0.06, type: "spring", stiffness: 260, damping: 20 }}
                 />
-                <text x={positiveXs[i]} y={yBase + 4} textAnchor="middle" className="fill-white font-bold" style={{ fontSize: 16 }}>
+                <text x={positiveXs[i]} y={yBase + 4} textAnchor="middle" className="fill-foreground font-bold" style={{ fontSize: 16 }}>
                   {n}
                 </text>
                 <text x={positiveXs[i]} y={yBase + r + 18} textAnchor="middle" className="fill-foreground" style={{ fontSize: 11 }}>
@@ -121,14 +121,14 @@ export function PipelineGraph() {
               cx={rejectedX}
               cy={rejectedY}
               r={nodeRadius(counts.rejected)}
-              fill="#3f0d0d"
-              stroke={selected === "rejected" ? "white" : "rgba(239,68,68,0.6)"}
+              fill="var(--surface-3)"
+              stroke={selected === "rejected" ? "var(--signal)" : "var(--border)"}
               strokeWidth={selected === "rejected" ? 3 : 1.5}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.5, type: "spring" }}
             />
-            <text x={rejectedX} y={rejectedY + 4} textAnchor="middle" className="fill-[#fca5a5] font-bold" style={{ fontSize: 14 }}>
+            <text x={rejectedX} y={rejectedY + 4} textAnchor="middle" className="fill-muted-foreground font-bold" style={{ fontSize: 14 }}>
               {counts.rejected}
             </text>
             <text x={rejectedX} y={rejectedY + nodeRadius(counts.rejected) + 16} textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: 11 }}>

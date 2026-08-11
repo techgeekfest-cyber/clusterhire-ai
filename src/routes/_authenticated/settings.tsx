@@ -158,7 +158,7 @@ function Settings() {
         <div className="glass rounded-2xl p-5">
           <div className="flex items-center justify-between">
             <h3 className="font-display font-semibold">Connect your tools</h3>
-            <span className="rounded-full bg-[rgb(103_232_249_/_0.2)] border border-[rgb(103_232_249_/_0.35)] px-2 py-0.5 text-xs font-medium text-[#a5f3fc]">Coming soon</span>
+            <span className="rounded-full chip-signal px-2 py-0.5 text-xs font-medium">Coming soon</span>
           </div>
           <p className="mt-1 text-sm text-muted-foreground">Live integrations aren't part of this template. Import candidates via CSV in the meantime.</p>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
