@@ -18,13 +18,14 @@ type Cand = {
 };
 
 const STAGE_TONE: Record<Stage, string> = {
-  applied: "bg-secondary text-foreground border-border",
-  screen: "bg-[var(--primary)] text-foreground border-[var(--primary)]",
-  interview: "bg-[rgb(6_182_212_/_0.3)] text-[#4B73FF] border-[rgb(103_232_249_/_0.5)]",
-  offer: "bg-[rgb(250_204_21_/_0.25)] text-[#fef08a] border-[rgb(250_204_21_/_0.4)]",
-  hired: "bg-[rgb(34_197_94_/_0.3)] text-[#86efac] border-[rgb(34_197_94_/_0.45)]",
-  rejected: "bg-[rgb(239_68_68_/_0.25)] text-[#fca5a5] border-[rgb(239_68_68_/_0.4)]",
+  applied: "bg-secondary text-muted-foreground border-border",
+  screen: "bg-secondary text-foreground border-border",
+  interview: "bg-secondary text-foreground border-border",
+  offer: "chip-signal",
+  hired: "bg-signal text-[#0a0a0b] border-signal",
+  rejected: "bg-destructive/10 text-destructive border-destructive/30",
 };
+
 
 export function CandidateCard({
   query,
@@ -142,7 +143,7 @@ export function CandidateCard({
                   disabled={isCurrent || move.isPending}
                   className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
                     isCurrent
-                      ? STAGE_TONE[s] + " ring-2 ring-white/40"
+                      ? STAGE_TONE[s] + " ring-1 ring-border"
                       : "bg-secondary border-border text-muted-foreground hover:bg-secondary hover:text-foreground"
                   }`}
                 >
@@ -164,9 +165,9 @@ export function CandidateCard({
             layout
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-4 flex items-center justify-between rounded-xl bg-[rgb(6_182_212_/_0.12)] border border-[rgb(103_232_249_/_0.35)] px-3 py-2 text-sm"
+            className="mt-4 flex items-center justify-between rounded-xl chip-signal px-3 py-2 text-sm"
           >
-            <span className="text-foreground">Move {active.name.split(" ")[0]} to <b className="text-[#4B73FF]">{STAGE_LABEL[targetStage]}</b>?</span>
+            <span className="text-foreground">Move {active.name.split(" ")[0]} to <b className="text-signal">{STAGE_LABEL[targetStage]}</b>?</span>
             <button
               onClick={() => move.mutate({ id: active.id, stage: targetStage })}
               disabled={move.isPending}

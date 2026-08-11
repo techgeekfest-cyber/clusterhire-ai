@@ -2,14 +2,16 @@
 @source "../src";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* Dark is the default surface. Only subtrees explicitly marked `.light`
+   opt out (the Settings appearance toggle). */
+@custom-variant dark (&:where(:not(.light *)));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-xl: calc(var(--radius) + 2px);
+  --radius-2xl: calc(var(--radius) + 6px);
   --radius-3xl: calc(var(--radius) + 12px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -31,256 +33,248 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Brand palette — Navy Trust */
-  --color-brand-navy: #0f1b3d;
-  --color-brand-navy-600: #1e3a5f;
-  --color-brand-blue: #3b6fa0;
-  --color-brand-blue-400: #5b8ec0;
-  --color-brand-mist: #e8edf3;
+  /* Neutral surface ladder */
+  --color-surface-0: var(--surface-0);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
 
-  /* Legacy `teal-*` aliases mapped onto the Navy Trust palette so
-     existing components keep working. */
-  --color-teal-50:  #e8edf3;
-  --color-teal-100: rgba(15, 27, 61, 0.08);
-  --color-teal-200: rgba(15, 27, 61, 0.18);
-  --color-teal-500: #3b6fa0;
-  --color-teal-600: #1e3a5f;
-  --color-teal-700: #0f1b3d;
+  /* Single accent */
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+
+  /* Legacy `teal-*` aliases remapped onto the neutral system so existing
+     components keep working without visual regressions. */
+  --color-teal-50:  var(--surface-2);
+  --color-teal-100: var(--surface-3);
+  --color-teal-200: var(--border);
+  --color-teal-500: var(--signal);
+  --color-teal-600: var(--foreground);
+  --color-teal-700: var(--muted-foreground);
 
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo, monospace;
 }
 
 :root {
-  --radius: 1rem;
+  --radius: 0.75rem;
 
-  /* Brand tokens (raw hex, referenced by utilities) */
-  --brand-navy: #0f1b3d;
-  --brand-navy-600: #1e3a5f;
-  --brand-blue: #3b6fa0;
-  --brand-blue-400: #5b8ec0;
-  --brand-mist: #e8edf3;
+  /* Charcoal ladder */
+  --surface-0: #0a0a0b;
+  --surface-1: #111113;
+  --surface-2: #17171a;
+  --surface-3: #1f1f23;
 
-  /* Navy Trust surfaces: cool mist background, deep navy ink */
-  --background: #e8edf3;
-  --foreground: #0f1b3d;
-  --card: #ffffff;
-  --card-foreground: #0f1b3d;
-  --popover: #ffffff;
-  --popover-foreground: #0f1b3d;
-  --primary: #1e3a5f;
-  --primary-foreground: #e8edf3;
-  --secondary: rgba(15, 27, 61, 0.06);
-  --secondary-foreground: #0f1b3d;
-  --muted: rgba(15, 27, 61, 0.06);
-  --muted-foreground: rgba(15, 27, 61, 0.62);
-  --accent: #3b6fa0;
-  --accent-foreground: #e8edf3;
-  --destructive: #d92d20;
-  --destructive-foreground: #e8edf3;
-  --border: rgba(15, 27, 61, 0.12);
-  --input: rgba(15, 27, 61, 0.14);
-  --ring: #3b6fa0;
+  --signal: #a3e635;
+  --signal-soft: rgba(163, 230, 53, 0.14);
 
-  /* Legacy teal-* raw aliases (kept in sync with @theme mapping) */
-  --teal-50:  #e8edf3;
-  --teal-100: rgba(15, 27, 61, 0.08);
-  --teal-200: rgba(15, 27, 61, 0.18);
-  --teal-500: #3b6fa0;
-  --teal-600: #1e3a5f;
-  --teal-700: #0f1b3d;
-}
-
-/* Dark theme — scoped to any subtree with `.dark` (e.g. authenticated app shell).
-   The landing/marketing pages never receive this class, so home stays light. */
-.dark {
-  --background: #0f1b3d;
-  --foreground: #e8edf3;
-  --card: #1a3358;
-  --card-foreground: #e8edf3;
-  --popover: #1a3358;
-  --popover-foreground: #e8edf3;
-  --primary: #3b6fa0;
-  --primary-foreground: #e8edf3;
-  --secondary: rgba(232, 237, 243, 0.08);
-  --secondary-foreground: #e8edf3;
-  --muted: rgba(232, 237, 243, 0.08);
-  --muted-foreground: rgba(232, 237, 243, 0.65);
-  --accent: #3b6fa0;
-  --accent-foreground: #e8edf3;
+  --background: #0a0a0b;
+  --foreground: #f4f4f5;
+  --card: #111113;
+  --card-foreground: #f4f4f5;
+  --popover: #17171a;
+  --popover-foreground: #f4f4f5;
+  --primary: #f4f4f5;
+  --primary-foreground: #0a0a0b;
+  --secondary: rgba(255, 255, 255, 0.06);
+  --secondary-foreground: #f4f4f5;
+  --muted: rgba(255, 255, 255, 0.05);
+  --muted-foreground: #9a9aa2;
+  --accent: rgba(255, 255, 255, 0.08);
+  --accent-foreground: #f4f4f5;
   --destructive: #f87171;
-  --destructive-foreground: #0f1b3d;
-  --border: rgba(232, 237, 243, 0.14);
-  --input: rgba(232, 237, 243, 0.16);
-  --ring: #3b6fa0;
+  --destructive-foreground: #0a0a0b;
+  --border: rgba(255, 255, 255, 0.09);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: #a3e635;
 
-  --teal-50:  #1a3358;
-  --teal-100: rgba(232, 237, 243, 0.08);
-  --teal-200: rgba(232, 237, 243, 0.18);
-  --teal-500: #3b6fa0;
-  --teal-600: #5b8ec0;
-  --teal-700: #93b8d8;
-}
-
-/* Dark-mode overrides for the surface utilities so `glass*` cards inside
-   the authed app pick up dark navy surfaces automatically. */
-.dark .glass,
-.dark [class~="glass"] {
-  background: #1a3358;
-  border-color: rgba(232, 237, 243, 0.12);
-  color: #e8edf3;
-  box-shadow:
-    0 4px 30px rgba(0, 0, 0, 0.40),
-    0 1px 3px rgba(0, 0, 0, 0.30);
-}
-.dark .glass-strong,
-.dark [class~="glass-strong"] {
-  background: #1a3358;
-  border-color: rgba(232, 237, 243, 0.16);
-  color: #e8edf3;
-  box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.50),
-    0 1px 3px rgba(0, 0, 0, 0.35);
-}
-.dark .glass-teal,
-.dark [class~="glass-teal"] {
-  background: linear-gradient(140deg,
-    rgba(59, 111, 160, 0.20),
-    rgba(15, 27, 61, 0.30));
-  border-color: rgba(232, 237, 243, 0.14);
-  color: #e8edf3;
-}
-.dark h1, .dark h2, .dark h3, .dark h4 { color: #e8edf3; }
-.dark input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
-.dark select,
-.dark textarea {
-  background: #1a3358;
-  color: #e8edf3;
-  border-color: rgba(232, 237, 243, 0.16);
-}
-.dark input::placeholder,
-.dark textarea::placeholder {
-  color: rgba(232, 237, 243, 0.5);
+  --teal-50: var(--surface-2);
+  --teal-100: var(--surface-3);
+  --teal-200: var(--border);
+  --teal-500: var(--signal);
+  --teal-600: var(--foreground);
+  --teal-700: var(--muted-foreground);
 }
 
+/* Optional light surface (Settings → Appearance → Light) */
+.light {
+  --surface-0: #fafafa;
+  --surface-1: #ffffff;
+  --surface-2: #f4f4f5;
+  --surface-3: #e9e9eb;
+
+  --signal: #4d7c0f;
+  --signal-soft: rgba(77, 124, 15, 0.10);
+
+  --background: #fafafa;
+  --foreground: #0a0a0b;
+  --card: #ffffff;
+  --card-foreground: #0a0a0b;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0b;
+  --primary: #18181b;
+  --primary-foreground: #fafafa;
+  --secondary: rgba(10, 10, 11, 0.05);
+  --secondary-foreground: #0a0a0b;
+  --muted: rgba(10, 10, 11, 0.04);
+  --muted-foreground: #6b6b73;
+  --accent: rgba(10, 10, 11, 0.06);
+  --accent-foreground: #0a0a0b;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(10, 10, 11, 0.10);
+  --input: rgba(10, 10, 11, 0.14);
+  --ring: #4d7c0f;
+}
 
 @layer base {
   * { border-color: var(--color-border); }
+
   html, body {
     color: var(--color-foreground);
+    background-color: var(--color-background);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     min-height: 100%;
   }
-  body {
-    position: relative;
-    background-color: #e8edf3;
-    background-image: none;
-  }
+
   #root, main { position: relative; z-index: 1; }
+
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.025em;
-    color: #0f1b3d;
+    letter-spacing: -0.03em;
+    color: var(--color-foreground);
+    font-weight: 600;
   }
 
-  /* Form controls keep readable ink on light surfaces */
+  /* Inputs inherit the surface ladder everywhere */
   input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
   select,
   textarea {
-    color: #0f1b3d;
+    color: var(--color-foreground);
+    background-color: var(--surface-2);
+    border-color: var(--color-border);
   }
   input::placeholder,
-  textarea::placeholder {
-    color: rgba(15, 27, 61, 0.5);
-  }
+  textarea::placeholder { color: var(--color-muted-foreground); }
+  option { background-color: var(--surface-2); color: var(--color-foreground); }
 
-  /* Visible keyboard focus on interactive elements */
   a:focus-visible,
   button:focus-visible,
   [role="button"]:focus-visible,
   input:focus-visible,
   select:focus-visible,
   textarea:focus-visible {
-    outline: 2px solid #3b6fa0;
+    outline: 2px solid var(--signal);
     outline-offset: 2px;
   }
+
+  ::selection { background: var(--signal-soft); }
+
+  /* Restrained scrollbars */
+  * { scrollbar-color: var(--surface-3) transparent; scrollbar-width: thin; }
 }
 
-/* Surface utilities — cool white cards on mist background, lifted navy cards
-   in dark mode (see overrides above). `glass*` classes across the app pick up
-   the Navy Trust brand system. */
+/* ---------- Surface utilities ---------- */
+
 @utility glass {
-  background: #ffffff;
-  border: 1px solid rgba(15, 27, 61, 0.10);
-  border-radius: 1.25rem;
-  box-shadow:
-    0 4px 30px rgba(15, 27, 61, 0.08),
-    0 1px 3px rgba(15, 27, 61, 0.05);
-  color: #0f1b3d;
+  background: var(--surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-foreground);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 @utility glass-strong {
-  background: #ffffff;
-  border: 1px solid rgba(15, 27, 61, 0.12);
-  border-radius: 1.5rem;
-  box-shadow:
-    0 8px 40px rgba(15, 27, 61, 0.12),
-    0 1px 3px rgba(15, 27, 61, 0.06);
-  color: #0f1b3d;
+  background: var(--surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-foreground);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
 @utility glass-teal {
-  background: linear-gradient(140deg,
-    rgba(59, 111, 160, 0.10),
-    rgba(15, 27, 61, 0.06));
-  border: 1px solid rgba(15, 27, 61, 0.10);
-  border-radius: 1.25rem;
-  box-shadow:
-    0 4px 30px rgba(15, 27, 61, 0.08),
-    0 1px 3px rgba(15, 27, 61, 0.05);
-  color: #0f1b3d;
+  background: var(--surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-foreground);
 }
 
+@utility surface-inset {
+  background: var(--surface-0);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+/* ---------- Controls ---------- */
+
 @utility btn-teal {
-  background: #1e3a5f;
-  color: #e8edf3;
-  border-radius: 0.9rem;
-  border: 1px solid #1e3a5f;
-  box-shadow: 0 2px 6px rgba(15, 27, 61, 0.18);
-  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-  &:hover {
-    transform: translateY(-1px);
-    background: #0f1b3d;
-    box-shadow: 0 6px 16px rgba(15, 27, 61, 0.24);
-  }
-  &:active { transform: translateY(1px); }
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font-weight: 600;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+  &:hover { opacity: 0.88; }
+  &:active { opacity: 0.8; }
 }
 
 @utility btn-light {
-  background: #e8edf3;
-  color: #0f1b3d;
-  border-radius: 0.9rem;
-  border: 1px solid rgba(15, 27, 61, 0.14);
-  box-shadow: 0 2px 6px rgba(15, 27, 61, 0.08);
-  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-  &:hover {
-    transform: translateY(-1px);
-    background: #ffffff;
-    box-shadow: 0 6px 16px rgba(15, 27, 61, 0.12);
-  }
-  &:active { transform: translateY(1px); }
+  background: var(--surface-2);
+  color: var(--foreground);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  &:hover { background: var(--surface-3); }
 }
 
-/* Duotone gradient headline helper — deep navy → accent blue */
+@utility btn-ghost {
+  background: transparent;
+  color: var(--muted-foreground);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  transition: color 0.15s ease, background-color 0.15s ease;
+  &:hover { color: var(--foreground); background: var(--secondary); }
+}
+
+@utility field {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  outline: none;
+  transition: border-color 0.15s ease;
+  &:focus { border-color: var(--signal); }
+}
+
+/* ---------- Type helpers ---------- */
+
 @utility text-duotone {
-  background: linear-gradient(120deg, #0f1b3d 0%, #3b6fa0 100%);
+  background: linear-gradient(120deg, var(--foreground) 0%, var(--muted-foreground) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Muted body text on mist background */
-@utility text-soft {
-  color: rgba(15, 27, 61, 0.6);
+@utility text-soft { color: var(--muted-foreground); }
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility hairline { border-top: 1px solid var(--color-border); }
+
+@utility chip-signal {
+  background: var(--signal-soft);
+  border: 1px solid color-mix(in oklab, var(--signal) 35%, transparent);
+  color: var(--signal);
 }

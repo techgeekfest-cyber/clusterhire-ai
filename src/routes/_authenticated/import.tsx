@@ -107,7 +107,7 @@ function ImportPage() {
       <p className="text-sm text-muted-foreground">Upload a CSV. We'll auto-map columns and let you fix any that don't match.</p>
 
       <div className="mt-4 flex flex-wrap gap-3">
-        <button onClick={downloadTemplate} className="glass inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-medium hover:bg-white/80">
+        <button onClick={downloadTemplate} className="glass inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-medium hover:bg-secondary">
           <Download className="h-4 w-4" /> Download template
         </button>
         <label className="btn-teal inline-flex cursor-pointer items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-semibold">
@@ -124,7 +124,7 @@ function ImportPage() {
             {FIELDS.map((f) => (
               <label key={f} className="flex items-center gap-2 text-sm">
                 <span className="w-40 font-medium">{f}</span>
-                <select value={mapping[f] ?? ""} onChange={(e) => setMapping({ ...mapping, [f]: e.target.value })} className="flex-1 rounded-lg border border-input bg-white/70 px-2 py-1 text-xs">
+                <select value={mapping[f] ?? ""} onChange={(e) => setMapping({ ...mapping, [f]: e.target.value })} className="flex-1 rounded-lg border border-input bg-secondary px-2 py-1 text-xs">
                   <option value="">— skip —</option>
                   {preview[0].map((h, i) => <option key={i} value={i}>{h}</option>)}
                 </select>
@@ -134,7 +134,7 @@ function ImportPage() {
 
           <div className="mt-4 overflow-x-auto">
             <table className="min-w-full text-xs">
-              <thead className="bg-white/15 text-white"><tr>{preview[0].map((h, i) => <th key={i} className="p-2 text-left font-semibold">{h}</th>)}</tr></thead>
+              <thead className="bg-secondary text-foreground"><tr>{preview[0].map((h, i) => <th key={i} className="p-2 text-left font-semibold">{h}</th>)}</tr></thead>
               <tbody className="text-white/85">{preview.slice(1).map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j} className="border-t border-white/15 p-2">{c}</td>)}</tr>)}</tbody>
             </table>
           </div>

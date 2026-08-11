@@ -1,25 +1,32 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { BrandLockup, BrandMark } from "@/components/BrandMark";
 
 export function MarketingShell({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen">
-      <header className="sticky top-0 z-40 px-4 py-3 sm:px-6">
-        <nav className="glass mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-4 py-3 sm:px-6">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-[#0f1b3d] text-[#e8edf3] font-bold">C</div>
-            <span className="font-display text-lg font-bold tracking-tight">ClusterHire</span>
+    <div className="min-h-screen bg-background">
+      <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+          <Link to="/" aria-label="ClusterHire home">
+            <BrandLockup />
           </Link>
-          <div className="flex items-center gap-1 sm:gap-3">
-            <Link to="/docs" className="rounded-lg px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground">Docs</Link>
-            <Link to="/auth" className="btn-teal rounded-xl px-4 py-2 text-sm font-medium">Sign in</Link>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <Link to="/docs" className="rounded-lg px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground">Docs</Link>
+            <Link to="/auth" className="btn-teal px-4 py-2 text-sm">Sign in</Link>
           </div>
         </nav>
       </header>
       <main>{children}</main>
-      <footer className="mx-auto max-w-6xl px-6 py-10 text-center text-sm text-muted-foreground">
-        <p>ClusterHire — AI candidate discovery and ranking · <Link to="/docs" className="underline hover:text-foreground">Docs</Link></p>
+      <footer className="mt-8 border-t border-border">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-6 py-10 text-sm text-muted-foreground sm:flex-row sm:justify-between">
+          <span className="flex items-center gap-2">
+            <BrandMark className="h-6 w-6 text-foreground" />
+            <span>ClusterHire — AI candidate discovery and ranking</span>
+          </span>
+          <Link to="/docs" className="transition-colors hover:text-foreground">Docs</Link>
+        </div>
       </footer>
     </div>
   );
 }
+

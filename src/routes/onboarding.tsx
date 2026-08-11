@@ -260,7 +260,7 @@ function Progress({ step }: { step: number }) {
               className={
                 "grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs font-semibold " +
                 (done
-                  ? "bg-teal-600 text-white"
+                  ? "bg-primary text-primary-foreground"
                   : active
                     ? "bg-primary text-primary-foreground"
                     : "bg-muted text-muted-foreground")
@@ -290,7 +290,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
-const inputCls = "w-full rounded-xl border border-input bg-white/70 dark:bg-white/5 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/30";
+const inputCls = "w-full rounded-xl border border-input bg-secondary px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/30";
 
 function Step1({ state, onChange }: { state: ProfileState; onChange: (patch: Partial<ProfileState>) => void }) {
   return (
@@ -370,7 +370,7 @@ function Step2({ state, onChange }: { state: ProfileState; onChange: (patch: Par
                     "rounded-xl border px-3 py-2 text-sm font-medium transition-colors " +
                     (active
                       ? "border-teal-500 bg-teal-500/10 text-foreground"
-                      : "border-input bg-white/60 dark:bg-white/5 text-muted-foreground hover:text-foreground")
+                      : "border-input bg-secondary text-muted-foreground hover:text-foreground")
                   }
                 >
                   {s}
@@ -474,10 +474,10 @@ function Step3({
           <p className="mt-1 text-xs text-muted-foreground">Columns: name, email, phone, requisition_title, source, stage, notes.</p>
 
           <div className="mt-3 flex flex-wrap gap-2">
-            <button onClick={downloadTemplate} className="glass inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-medium hover:bg-white/80">
+            <button onClick={downloadTemplate} className="glass inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-medium hover:bg-secondary">
               <Download className="h-3.5 w-3.5" /> Template
             </button>
-            <label className="inline-flex cursor-pointer items-center gap-1.5 rounded-xl border border-input bg-white/70 dark:bg-white/5 px-3 py-1.5 text-xs font-medium hover:bg-white/80">
+            <label className="inline-flex cursor-pointer items-center gap-1.5 rounded-xl border border-input bg-secondary px-3 py-1.5 text-xs font-medium hover:bg-secondary">
               Choose CSV
               <input type="file" accept=".csv,text/csv" className="hidden" onChange={(e) => e.target.files?.[0] && onFile(e.target.files[0])} />
             </label>
@@ -505,7 +505,7 @@ function Step3({
           <button
             onClick={onSeedSamples}
             disabled={busy || importing}
-            className="mt-4 w-full rounded-xl border border-input bg-white/70 dark:bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/80 disabled:opacity-50"
+            className="mt-4 w-full rounded-xl border border-input bg-secondary px-4 py-2 text-sm font-semibold hover:bg-secondary disabled:opacity-50"
           >
             {busy ? "Setting up…" : "Use sample data"}
           </button>

@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { STAGES, STAGE_LABEL, type Stage } from "@/lib/constants";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, PieChart, Pie, Cell } from "recharts";
 
-const COLORS = ["#4B73FF", "#FF0178", "#BBC1FF", "#FFA6F9", "#1B1B1B", "#4E93FF"];
+const COLORS = ["#a3e635", "#e4e4e7", "#a1a1aa", "#71717a", "#52525b", "#3f3f46"];
 
 type View = "funnel" | "sources" | "time-in-stage";
 
@@ -64,22 +64,22 @@ export function AnalyticsCard({ view }: { view: View }) {
             <BarChart data={funnel}>
               <XAxis dataKey="stage" tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} allowDecimals={false} axisLine={false} tickLine={false} />
-              <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 12, color: "white" }} />
-              <Bar dataKey="count" fill="#4B73FF" radius={[8, 8, 0, 0]} />
+              <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 12, color: "var(--foreground)" }} />
+              <Bar dataKey="count" fill="#a3e635" radius={[8, 8, 0, 0]} />
             </BarChart>
           ) : view === "sources" ? (
             <PieChart>
               <Pie data={sources} dataKey="value" nameKey="name" outerRadius={90} label={{ fill: "var(--foreground)", fontSize: 11 }}>
                 {sources.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
               </Pie>
-              <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 12, color: "white" }} />
+              <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 12, color: "var(--foreground)" }} />
             </PieChart>
           ) : (
             <BarChart data={timeInStage}>
               <XAxis dataKey="stage" tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} axisLine={false} tickLine={false} />
-              <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 12, color: "white" }} />
-              <Bar dataKey="days" fill="#FF0178" radius={[8, 8, 0, 0]} />
+              <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 12, color: "var(--foreground)" }} />
+              <Bar dataKey="days" fill="#71717a" radius={[8, 8, 0, 0]} />
             </BarChart>
           )}
         </ResponsiveContainer>
