@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { BrandLockup } from "@/components/BrandMark";
 import { useQueryClient } from "@tanstack/react-query";
 import { LogOut, MoreHorizontal, FileText, Upload, Download, Settings as SettingsIcon, Book } from "lucide-react";
 import {
@@ -27,11 +28,7 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-40 px-3 pt-3 sm:px-6">
         <div className="glass mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-4 py-2.5">
           <Link to="/workspace" className="flex items-center gap-2 min-w-0">
-            <div className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground font-bold shadow-lg">C</div>
-            <div className="min-w-0">
-              <div className="font-display text-sm font-bold tracking-tight text-foreground truncate">ClusterHire</div>
-              <div className="text-[10px] uppercase tracking-widest text-muted-foreground">workspace</div>
-            </div>
+            <BrandLockup subtitle="workspace" />
           </Link>
 
           <div className="flex items-center gap-1">
