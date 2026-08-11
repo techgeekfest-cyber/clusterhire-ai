@@ -370,7 +370,7 @@ function Step2({ state, onChange }: { state: ProfileState; onChange: (patch: Par
                     "rounded-xl border px-3 py-2 text-sm font-medium transition-colors " +
                     (active
                       ? "border-teal-500 bg-teal-500/10 text-foreground"
-                      : "border-input bg-white/60 text-muted-foreground hover:text-foreground")
+                      : "border-input bg-secondary text-muted-foreground hover:text-foreground")
                   }
                 >
                   {s}

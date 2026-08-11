@@ -92,7 +92,7 @@ function Pipeline() {
             >
               <div className="flex items-center justify-between px-1 pb-2">
                 <h3 className="font-display text-sm font-semibold text-teal-700">{STAGE_LABEL[stage]}</h3>
-                <span className="rounded-full bg-white/20 border border-white/25 px-2 py-0.5 text-xs font-medium text-white">{list.length}</span>
+                <span className="rounded-full bg-secondary border border-border px-2 py-0.5 text-xs font-medium text-muted-foreground">{list.length}</span>
               </div>
               <div className="space-y-2">
                 {list.map((c) => (

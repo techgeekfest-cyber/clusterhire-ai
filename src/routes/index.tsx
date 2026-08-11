@@ -31,7 +31,7 @@ function Landing() {
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link to="/auth" className="btn-light rounded-xl px-6 py-3 text-sm font-semibold">Start now</Link>
-              <Link to="/docs" className="rounded-xl px-6 py-3 text-sm font-semibold text-white/90 ring-1 ring-inset ring-white/30 hover:bg-white/10">See how it works</Link>
+              <Link to="/docs" className="rounded-xl px-6 py-3 text-sm font-semibold text-foreground ring-1 ring-inset ring-border hover:bg-secondary">See how it works</Link>
             </div>
           </div>
         </div>

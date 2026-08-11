@@ -134,7 +134,7 @@ function ImportPage() {
 
           <div className="mt-4 overflow-x-auto">
             <table className="min-w-full text-xs">
-              <thead className="bg-white/15 text-white"><tr>{preview[0].map((h, i) => <th key={i} className="p-2 text-left font-semibold">{h}</th>)}</tr></thead>
+              <thead className="bg-secondary text-foreground"><tr>{preview[0].map((h, i) => <th key={i} className="p-2 text-left font-semibold">{h}</th>)}</tr></thead>
               <tbody className="text-white/85">{preview.slice(1).map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j} className="border-t border-white/15 p-2">{c}</td>)}</tr>)}</tbody>
             </table>
           </div>
