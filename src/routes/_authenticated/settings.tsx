@@ -19,7 +19,7 @@ const INDUSTRIES = [
 ] as const;
 const COMPANY_SIZES = ["1–10", "11–50", "51–200", "201–1,000", "1,000+"] as const;
 
-const inputCls = "w-full rounded-xl border border-input bg-secondary px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/30";
+const inputCls = "w-full rounded-xl border border-input bg-secondary px-3 py-2 text-sm outline-none focus:border-signal focus:ring-2 focus:ring-signal/25";
 
 function Settings() {
   const qc = useQueryClient();

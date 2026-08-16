@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { toast } from "sonner";
 import { MarketingShell } from "@/components/MarketingShell";
+import { BrandMark } from "@/components/BrandMark";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({ meta: [{ title: "Sign in — ClusterHire" }] }),
@@ -59,7 +60,8 @@ function AuthPage() {
     <MarketingShell>
       <div className="mx-auto max-w-md px-4 pt-8 pb-16 sm:pt-16">
         <div className="glass-strong rounded-3xl p-6 sm:p-8">
-          <h1 className="font-display text-2xl font-bold">{mode === "signin" ? "Welcome back" : "Create your workspace"}</h1>
+          <BrandMark className="h-9 w-9 text-foreground" />
+          <h1 className="mt-4 font-display text-2xl font-bold">{mode === "signin" ? "Welcome back" : "Create your workspace"}</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             {mode === "signin" ? "Sign in to your pipeline." : "Your data is private to you."}
           </p>
@@ -76,10 +78,10 @@ function AuthPage() {
           <form onSubmit={submit} className="space-y-3">
             <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
               placeholder="you@company.com"
-              className="w-full rounded-xl border border-input bg-secondary px-4 py-2.5 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/30" />
+              className="w-full rounded-xl border border-input bg-secondary px-4 py-2.5 text-sm outline-none focus:border-signal focus:ring-2 focus:ring-signal/25" />
             <input type="password" required minLength={6} value={password} onChange={(e) => setPassword(e.target.value)}
               placeholder="Password (min 6 characters)"
-              className="w-full rounded-xl border border-input bg-secondary px-4 py-2.5 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/30" />
+              className="w-full rounded-xl border border-input bg-secondary px-4 py-2.5 text-sm outline-none focus:border-signal focus:ring-2 focus:ring-signal/25" />
             <button disabled={loading} type="submit" className="btn-teal w-full rounded-xl px-4 py-2.5 text-sm font-semibold disabled:opacity-60">
               {loading ? "Please wait…" : mode === "signin" ? "Sign in" : "Create account"}
             </button>
@@ -87,7 +89,7 @@ function AuthPage() {
 
           <p className="mt-4 text-center text-sm text-muted-foreground">
             {mode === "signin" ? "New here?" : "Already have an account?"}{" "}
-            <button className="font-medium text-teal-700 hover:underline" onClick={() => setMode(mode === "signin" ? "signup" : "signin")}>
+            <button className="font-medium text-foreground hover:underline" onClick={() => setMode(mode === "signin" ? "signup" : "signin")}>
               {mode === "signin" ? "Create an account" : "Sign in"}
             </button>
           </p>
