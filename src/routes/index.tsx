@@ -70,7 +70,7 @@ function Landing() {
 
 
       <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
-        <h2 className="font-display text-3xl font-bold text-center">Frequently asked</h2>
+        <h2 className="text-center font-display text-3xl font-semibold tracking-tight">Frequently asked</h2>
         <div className="glass mt-8 rounded-2xl p-2 sm:p-4">
           <Accordion type="single" collapsible>
             <AccordionItem value="a">
