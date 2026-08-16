@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate, redirect } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { BrandLockup } from "@/components/BrandMark";
 import { STAGES, type Stage } from "@/lib/constants";
 import { ArrowLeft, ArrowRight, Check, LogOut, Upload, Sparkles, Download } from "lucide-react";
 
@@ -178,7 +179,7 @@ function Onboarding() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="mx-auto flex max-w-3xl items-center justify-between px-4 py-5 sm:px-6">
-        <div className="font-display text-lg font-bold">ClusterHire</div>
+        <BrandLockup />
         <button
           onClick={signOut}
           className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground"
@@ -290,7 +291,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
-const inputCls = "w-full rounded-xl border border-input bg-secondary px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/30";
+const inputCls = "w-full rounded-xl border border-input bg-secondary px-3 py-2 text-sm outline-none focus:border-signal focus:ring-2 focus:ring-signal/25";
 
 function Step1({ state, onChange }: { state: ProfileState; onChange: (patch: Partial<ProfileState>) => void }) {
   return (
