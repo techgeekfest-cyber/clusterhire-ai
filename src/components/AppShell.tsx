@@ -112,7 +112,9 @@ function ShellInner({ children }: { children: ReactNode }) {
           <div className="flex-1 flex flex-col min-w-0">
             <header className="sticky top-0 z-30 flex h-[61px] items-center gap-2 border-b border-border bg-background/85 px-4 backdrop-blur">
               <SidebarTrigger className="text-foreground" />
-              <span className="eyebrow">ClusterHire</span>
+              <Link to="/pipeline" className="eyebrow transition-colors hover:text-foreground">
+                ClusterHire
+              </Link>
             </header>
             <main className="flex-1 mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
               {children}

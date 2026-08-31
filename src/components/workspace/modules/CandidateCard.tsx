@@ -22,7 +22,7 @@ const STAGE_TONE: Record<Stage, string> = {
   screen: "bg-secondary text-foreground border-border",
   interview: "bg-secondary text-foreground border-border",
   offer: "chip-signal",
-  hired: "bg-signal text-[#0a0a0b] border-signal",
+  hired: "bg-signal text-primary-foreground border-signal",
   rejected: "bg-destructive/10 text-destructive border-destructive/30",
 };
 

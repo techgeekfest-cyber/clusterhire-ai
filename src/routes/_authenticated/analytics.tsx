@@ -9,7 +9,8 @@ export const Route = createFileRoute("/_authenticated/analytics")({
   component: Analytics,
 });
 
-const COLORS = ["#a3e635", "#e4e4e7", "#a1a1aa", "#71717a", "#52525b", "#3f3f46"];
+const COLORS = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)", "var(--chart-4)", "var(--chart-5)"];
+const tooltipStyle = { background: "var(--popover)", border: "1px solid var(--border)", borderRadius: 8, color: "var(--popover-foreground)" };
 
 function Analytics() {
   const cands = useQuery({
@@ -72,10 +73,10 @@ function Analytics() {
           <div className="mt-3 h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={funnel}>
-                <XAxis dataKey="stage" tick={{ fontSize: 11 }} />
-                <YAxis tick={{ fontSize: 11 }} allowDecimals={false} />
-                <Tooltip />
-                <Bar dataKey="count" fill="#a3e635" radius={[8, 8, 0, 0]} />
+                <XAxis dataKey="stage" tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} axisLine={{ stroke: "var(--border)" }} tickLine={false} />
+                <YAxis tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} axisLine={false} tickLine={false} allowDecimals={false} />
+                <Tooltip contentStyle={tooltipStyle} labelStyle={{ color: "var(--popover-foreground)" }} />
+                <Bar dataKey="count" fill="var(--chart-1)" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -86,10 +87,10 @@ function Analytics() {
           <div className="mt-3 h-64">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={sources} dataKey="value" nameKey="name" outerRadius={90} label>
+                <Pie data={sources} dataKey="value" nameKey="name" outerRadius={90} label={{ fill: "var(--foreground)", fontSize: 11 }}>
                   {sources.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                 </Pie>
-                <Tooltip />
+                <Tooltip contentStyle={tooltipStyle} labelStyle={{ color: "var(--popover-foreground)" }} />
               </PieChart>
             </ResponsiveContainer>
           </div>
@@ -100,10 +101,10 @@ function Analytics() {
           <div className="mt-3 h-56">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={timeInStage}>
-                <XAxis dataKey="stage" tick={{ fontSize: 11 }} />
-                <YAxis tick={{ fontSize: 11 }} />
-                <Tooltip />
-                <Bar dataKey="days" fill="#71717a" radius={[8, 8, 0, 0]} />
+                <XAxis dataKey="stage" tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} axisLine={{ stroke: "var(--border)" }} tickLine={false} />
+                <YAxis tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} axisLine={false} tickLine={false} />
+                <Tooltip contentStyle={tooltipStyle} labelStyle={{ color: "var(--popover-foreground)" }} />
+                <Bar dataKey="days" fill="var(--chart-4)" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
