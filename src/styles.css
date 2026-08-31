@@ -32,6 +32,21 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Charts */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
 
   /* Neutral surface ladder */
   --color-surface-0: var(--surface-0);
@@ -89,6 +104,21 @@
   --input: rgba(255, 255, 255, 0.12);
   --ring: #a3e635;
 
+  --sidebar: #111113;
+  --sidebar-foreground: #f4f4f5;
+  --sidebar-primary: #f4f4f5;
+  --sidebar-primary-foreground: #0a0a0b;
+  --sidebar-accent: rgba(255, 255, 255, 0.08);
+  --sidebar-accent-foreground: #f4f4f5;
+  --sidebar-border: rgba(255, 255, 255, 0.09);
+  --sidebar-ring: #a3e635;
+
+  --chart-1: #a3e635;
+  --chart-2: #e4e4e7;
+  --chart-3: #a1a1aa;
+  --chart-4: #71717a;
+  --chart-5: #52525b;
+
   --teal-50: var(--surface-2);
   --teal-100: var(--surface-3);
   --teal-200: var(--border);
@@ -126,6 +156,21 @@
   --border: rgba(10, 10, 11, 0.10);
   --input: rgba(10, 10, 11, 0.14);
   --ring: #4d7c0f;
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0a0a0b;
+  --sidebar-primary: #18181b;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: rgba(10, 10, 11, 0.06);
+  --sidebar-accent-foreground: #0a0a0b;
+  --sidebar-border: rgba(10, 10, 11, 0.10);
+  --sidebar-ring: #4d7c0f;
+
+  --chart-1: #4d7c0f;
+  --chart-2: #27272a;
+  --chart-3: #52525b;
+  --chart-4: #71717a;
+  --chart-5: #a1a1aa;
 }
 
 @layer base {
@@ -156,6 +201,13 @@
     color: var(--color-foreground);
     background-color: var(--surface-2);
     border-color: var(--color-border);
+  }
+  input:disabled,
+  select:disabled,
+  textarea:disabled {
+    color: var(--color-muted-foreground);
+    opacity: 1;
+    cursor: not-allowed;
   }
   input::placeholder,
   textarea::placeholder { color: var(--color-muted-foreground); }

@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { STAGES, STAGE_LABEL, type Stage } from "@/lib/constants";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, PieChart, Pie, Cell } from "recharts";
 
-const COLORS = ["#a3e635", "#e4e4e7", "#a1a1aa", "#71717a", "#52525b", "#3f3f46"];
+const COLORS = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)", "var(--chart-4)", "var(--chart-5)"];
 
 type View = "funnel" | "sources" | "time-in-stage";
 
@@ -65,7 +65,7 @@ export function AnalyticsCard({ view }: { view: View }) {
               <XAxis dataKey="stage" tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} allowDecimals={false} axisLine={false} tickLine={false} />
               <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 12, color: "var(--foreground)" }} />
-              <Bar dataKey="count" fill="#a3e635" radius={[8, 8, 0, 0]} />
+              <Bar dataKey="count" fill="var(--chart-1)" radius={[8, 8, 0, 0]} />
             </BarChart>
           ) : view === "sources" ? (
             <PieChart>
@@ -79,7 +79,7 @@ export function AnalyticsCard({ view }: { view: View }) {
               <XAxis dataKey="stage" tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} axisLine={false} tickLine={false} />
               <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 12, color: "var(--foreground)" }} />
-              <Bar dataKey="days" fill="#71717a" radius={[8, 8, 0, 0]} />
+              <Bar dataKey="days" fill="var(--chart-4)" radius={[8, 8, 0, 0]} />
             </BarChart>
           )}
         </ResponsiveContainer>

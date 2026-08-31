@@ -1,9 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
-import { Linkedin, Briefcase, Globe, Sun, Moon } from "lucide-react";
+import { Linkedin, Briefcase, Globe, Sun, Moon, FileSpreadsheet, ArrowRight } from "lucide-react";
 import { useAppTheme } from "@/hooks/useAppTheme";
 
 export const Route = createFileRoute("/_authenticated/settings")({
@@ -156,21 +156,31 @@ function Settings() {
         </div>
 
         <div className="glass rounded-2xl p-5">
-          <div className="flex items-center justify-between">
-            <h3 className="font-display font-semibold">Connect your tools</h3>
-            <span className="rounded-full chip-signal px-2 py-0.5 text-xs font-medium">Coming soon</span>
-          </div>
-          <p className="mt-1 text-sm text-muted-foreground">Live integrations aren't part of this template. Import candidates via CSV in the meantime.</p>
-          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+          <h3 className="font-display font-semibold">Data sources & integrations</h3>
+          <p className="mt-1 text-sm text-muted-foreground">Import candidates today with CSV. Direct ATS and sourcing integrations are planned.</p>
+
+          <Link to="/import" className="mt-4 flex items-center gap-3 rounded-xl border border-signal/35 bg-signal-soft p-3 transition-colors hover:border-signal/60">
+            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-signal text-primary-foreground">
+              <FileSpreadsheet className="h-4 w-4" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-sm font-medium text-foreground">CSV Import</span>
+              <span className="block text-xs text-muted-foreground">Upload candidate data from a spreadsheet</span>
+            </span>
+            <span className="hidden rounded-full border border-signal/35 px-2 py-0.5 text-xs font-medium text-signal sm:inline">Available now</span>
+            <ArrowRight className="h-4 w-4 shrink-0 text-signal" />
+          </Link>
+
+          <div className="mt-3 divide-y divide-border rounded-xl border border-border bg-secondary/50">
             {[
-              { icon: Linkedin, name: "LinkedIn", desc: "Sync applicants automatically" },
-              { icon: Briefcase, name: "Indeed", desc: "Import from your job posts" },
-              { icon: Globe, name: "Greenhouse / Lever", desc: "Bring your ATS pipeline in" },
-            ].map((c) => (
-              <div key={c.name} className="glass-strong rounded-xl p-4 opacity-70">
-                <c.icon className="h-5 w-5 text-teal-700" />
-                <div className="mt-2 font-medium">{c.name}</div>
-                <div className="text-xs text-muted-foreground">{c.desc}</div>
+              { icon: Linkedin, name: "LinkedIn" },
+              { icon: Briefcase, name: "Indeed" },
+              { icon: Globe, name: "Greenhouse / Lever" },
+            ].map((item) => (
+              <div key={item.name} className="flex items-center gap-3 px-3 py-2.5 text-muted-foreground">
+                <item.icon className="h-4 w-4 shrink-0" />
+                <span className="min-w-0 flex-1 truncate text-sm font-medium">{item.name}</span>
+                <span className="rounded-full border border-border bg-background px-2 py-0.5 text-[11px] font-medium">Planned</span>
               </div>
             ))}
           </div>
