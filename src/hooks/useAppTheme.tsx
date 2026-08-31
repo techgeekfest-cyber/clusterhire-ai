@@ -24,6 +24,14 @@ export function AppThemeProvider({ children }: { children: ReactNode }) {
     try { window.localStorage.setItem(KEY, theme); } catch { /* noop */ }
   }, [theme]);
 
+  // Radix menus, dialogs, sheets, and toasts render in document-level
+  // portals, outside the themed app wrapper. Mirror the light marker onto
+  // the root element so those surfaces inherit the same semantic tokens.
+  useEffect(() => {
+    document.documentElement.classList.toggle("light", theme === "light");
+    return () => document.documentElement.classList.remove("light");
+  }, [theme]);
+
   const setTheme = useCallback((t: Theme) => setThemeState(t), []);
   const toggle = useCallback(() => setThemeState((t) => (t === "dark" ? "light" : "dark")), []);
 
