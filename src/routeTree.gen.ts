@@ -18,6 +18,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedWorkspaceRouteImport } from './routes/_authenticated/workspace'
 import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
 import { Route as AuthenticatedRequisitionsRouteImport } from './routes/_authenticated/requisitions'
+import { Route as AuthenticatedRankingRouteImport } from './routes/_authenticated/ranking'
 import { Route as AuthenticatedPipelineRouteImport } from './routes/_authenticated/pipeline'
 import { Route as AuthenticatedImportRouteImport } from './routes/_authenticated/import'
 import { Route as AuthenticatedExportRouteImport } from './routes/_authenticated/export'
@@ -70,6 +71,11 @@ const AuthenticatedRequisitionsRoute =
     path: '/requisitions',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedRankingRoute = AuthenticatedRankingRouteImport.update({
+  id: '/ranking',
+  path: '/ranking',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedPipelineRoute = AuthenticatedPipelineRouteImport.update({
   id: '/pipeline',
   path: '/pipeline',
@@ -113,6 +119,7 @@ export interface FileRoutesByFullPath {
   '/export': typeof AuthenticatedExportRoute
   '/import': typeof AuthenticatedImportRoute
   '/pipeline': typeof AuthenticatedPipelineRoute
+  '/ranking': typeof AuthenticatedRankingRoute
   '/requisitions': typeof AuthenticatedRequisitionsRoute
   '/settings': typeof AuthenticatedSettingsRoute
   '/workspace': typeof AuthenticatedWorkspaceRoute
@@ -129,6 +136,7 @@ export interface FileRoutesByTo {
   '/export': typeof AuthenticatedExportRoute
   '/import': typeof AuthenticatedImportRoute
   '/pipeline': typeof AuthenticatedPipelineRoute
+  '/ranking': typeof AuthenticatedRankingRoute
   '/requisitions': typeof AuthenticatedRequisitionsRoute
   '/settings': typeof AuthenticatedSettingsRoute
   '/workspace': typeof AuthenticatedWorkspaceRoute
@@ -147,6 +155,7 @@ export interface FileRoutesById {
   '/_authenticated/export': typeof AuthenticatedExportRoute
   '/_authenticated/import': typeof AuthenticatedImportRoute
   '/_authenticated/pipeline': typeof AuthenticatedPipelineRoute
+  '/_authenticated/ranking': typeof AuthenticatedRankingRoute
   '/_authenticated/requisitions': typeof AuthenticatedRequisitionsRoute
   '/_authenticated/settings': typeof AuthenticatedSettingsRoute
   '/_authenticated/workspace': typeof AuthenticatedWorkspaceRoute
@@ -165,6 +174,7 @@ export interface FileRouteTypes {
     | '/export'
     | '/import'
     | '/pipeline'
+    | '/ranking'
     | '/requisitions'
     | '/settings'
     | '/workspace'
@@ -181,6 +191,7 @@ export interface FileRouteTypes {
     | '/export'
     | '/import'
     | '/pipeline'
+    | '/ranking'
     | '/requisitions'
     | '/settings'
     | '/workspace'
@@ -198,6 +209,7 @@ export interface FileRouteTypes {
     | '/_authenticated/export'
     | '/_authenticated/import'
     | '/_authenticated/pipeline'
+    | '/_authenticated/ranking'
     | '/_authenticated/requisitions'
     | '/_authenticated/settings'
     | '/_authenticated/workspace'
@@ -279,6 +291,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRequisitionsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/ranking': {
+      id: '/_authenticated/ranking'
+      path: '/ranking'
+      fullPath: '/ranking'
+      preLoaderRoute: typeof AuthenticatedRankingRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/pipeline': {
       id: '/_authenticated/pipeline'
       path: '/pipeline'
@@ -329,6 +348,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedExportRoute: typeof AuthenticatedExportRoute
   AuthenticatedImportRoute: typeof AuthenticatedImportRoute
   AuthenticatedPipelineRoute: typeof AuthenticatedPipelineRoute
+  AuthenticatedRankingRoute: typeof AuthenticatedRankingRoute
   AuthenticatedRequisitionsRoute: typeof AuthenticatedRequisitionsRoute
   AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
   AuthenticatedWorkspaceRoute: typeof AuthenticatedWorkspaceRoute
@@ -341,6 +361,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedExportRoute: AuthenticatedExportRoute,
   AuthenticatedImportRoute: AuthenticatedImportRoute,
   AuthenticatedPipelineRoute: AuthenticatedPipelineRoute,
+  AuthenticatedRankingRoute: AuthenticatedRankingRoute,
   AuthenticatedRequisitionsRoute: AuthenticatedRequisitionsRoute,
   AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
   AuthenticatedWorkspaceRoute: AuthenticatedWorkspaceRoute,
