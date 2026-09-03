@@ -308,8 +308,8 @@ function RankingPage() {
                   className="h-4 w-4 shrink-0 accent-[var(--signal)]"
                 />
                 <span className="w-8 shrink-0 font-mono text-sm text-muted-foreground">#{i + 1}</span>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
+                <div className="order-last min-w-0 basis-full sm:order-none sm:basis-0 sm:flex-1">
+                  <div className="flex flex-wrap items-center gap-2">
                     <p className="truncate font-medium text-foreground">{s.candidate.name}</p>
                     {s.insufficient && (
                       <span className="rounded-full border border-border px-2 py-0.5 text-[10px] uppercase tracking-wide text-muted-foreground">
@@ -320,13 +320,14 @@ function RankingPage() {
                   <p className="truncate text-xs text-muted-foreground">
                     {s.matchedSkills.length
                       ? s.matchedSkills.slice(0, 4).map((m) => m.skill).join(" · ")
-                      : "No recognised skills in the stored record"}
+                      : "No required-skill evidence in the stored record"}
                   </p>
                 </div>
-                <div className="text-right">
+                <div className="ml-auto text-right sm:ml-0">
                   <div className="font-mono text-xl font-semibold text-foreground">{s.overall}</div>
                   <div className="text-[10px] uppercase tracking-wide text-muted-foreground">Overall</div>
                 </div>
+
                 <Link
                   to="/candidates/$id"
                   params={{ id: s.candidate.id }}
