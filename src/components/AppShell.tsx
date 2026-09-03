@@ -28,12 +28,14 @@ import {
   Settings,
   MessageSquare,
   Users,
+  Sparkles,
   LogOut,
 } from "lucide-react";
 
 const NAV = [
   { to: "/pipeline", label: "Pipeline", icon: KanbanSquare },
   { to: "/candidates", label: "Candidates", icon: Users },
+  { to: "/ranking", label: "Ranking", icon: Sparkles },
   { to: "/requisitions", label: "Requisitions", icon: Briefcase },
   { to: "/analytics", label: "Analytics", icon: BarChart3 },
   { to: "/import", label: "Import", icon: Upload },
