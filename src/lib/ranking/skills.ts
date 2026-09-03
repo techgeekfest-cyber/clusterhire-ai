@@ -33,7 +33,7 @@ export const SKILL_LEXICON: SkillDef[] = [
   { name: "NoSQL", aliases: ["mongodb", "dynamodb", "redis", "nosql"], family: "data" },
   { name: "Data Engineering", aliases: ["etl", "airflow", "dbt", "spark", "data pipeline", "data pipelines"], family: "data" },
   { name: "Machine Learning", aliases: ["machine learning", "ml", "pytorch", "tensorflow", "scikit-learn", "sklearn"], family: "ai" },
-  { name: "LLM / GenAI", aliases: ["llm", "llms", "genai", "generative ai", "rag", "prompt engineering", "openai"], family: "ai" },
+  { name: "LLM / GenAI", aliases: ["llm", "llms", "genai", "generative ai", "artificial intelligence", "ai", "rag", "prompt engineering", "openai"], family: "ai" },
   { name: "Analytics", aliases: ["analytics", "tableau", "looker", "power bi", "metabase"], family: "data" },
   { name: "AWS", aliases: ["aws", "amazon web services", "ec2", "s3", "lambda"], family: "cloud" },
   { name: "GCP", aliases: ["gcp", "google cloud", "bigquery"], family: "cloud" },

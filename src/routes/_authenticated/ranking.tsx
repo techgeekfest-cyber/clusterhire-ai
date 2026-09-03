@@ -320,7 +320,7 @@ function RankingPage() {
                   <p className="truncate text-xs text-muted-foreground">
                     {s.matchedSkills.length
                       ? s.matchedSkills.slice(0, 4).map((m) => m.skill).join(" · ")
-                      : "No recognised skills in the stored record"}
+                      : "No required-skill evidence in the stored record"}
                   </p>
                 </div>
                 <div className="text-right">
