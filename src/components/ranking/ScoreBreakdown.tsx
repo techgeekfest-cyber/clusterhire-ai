@@ -18,7 +18,7 @@ export function DimensionBar({
         {points.toFixed(1)}/{max}
       </span>
       <div className="col-span-2 h-1.5 overflow-hidden rounded-full bg-muted">
-        <div className="h-full rounded-full bg-primary transition-all" style={{ width: `${pct}%` }} />
+        <div className="h-full rounded-full bg-signal transition-all" style={{ width: `${pct}%` }} />
       </div>
     </div>
   );
@@ -49,7 +49,7 @@ export function ScoreBreakdown({ score }: { score: CandidateScore }) {
                   title={m.evidence ?? undefined}
                   className={`rounded-full border px-2 py-0.5 text-xs ${
                     m.depth >= 0.7
-                      ? "border-primary/40 bg-primary/10 text-foreground"
+                      ? "border-signal/40 bg-signal/10 text-foreground"
                       : "border-border bg-muted text-muted-foreground"
                   }`}
                 >
@@ -83,7 +83,7 @@ export function ScoreBreakdown({ score }: { score: CandidateScore }) {
             <ul className="grid gap-1.5">
               {strengths.map((s, i) => (
                 <li key={i} className="flex gap-2 text-xs text-foreground/85">
-                  <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                  <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-signal" />
                   <span>{s}</span>
                 </li>
               ))}

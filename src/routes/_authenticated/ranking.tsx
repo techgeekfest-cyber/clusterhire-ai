@@ -250,7 +250,7 @@ function RankingPage() {
             {moves.slice(0, 5).map((m) => (
               <li key={m.id} className="flex gap-2 text-xs text-foreground/85">
                 {m.delta > 0 ? (
-                  <ArrowUp className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                  <ArrowUp className="mt-0.5 h-3.5 w-3.5 shrink-0 text-signal" />
                 ) : (
                   <ArrowDown className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground" />
                 )}
@@ -305,7 +305,7 @@ function RankingPage() {
                   aria-label={`Select ${s.candidate.name} for comparison`}
                   checked={selected.includes(s.candidate.id)}
                   onChange={() => toggleSelect(s.candidate.id)}
-                  className="h-4 w-4 shrink-0 accent-[hsl(var(--primary))]"
+                  className="h-4 w-4 shrink-0 accent-[var(--signal)]"
                 />
                 <span className="w-8 shrink-0 font-mono text-sm text-muted-foreground">#{i + 1}</span>
                 <div className="min-w-0 flex-1">
