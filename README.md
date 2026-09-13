@@ -1,80 +1,105 @@
-# Talently — Recruiting Pipeline Tracker
+# ClusterHire AI
 
-A single-user (single-workspace-per-account) recruiting pipeline template. Kanban-style board, requisition tracking, candidate detail, analytics, CSV import/export. Built on TanStack Start + Lovable Cloud (Supabase under the hood).
+AI-Powered Candidate Discovery & Hiring Intelligence Platform
 
-## Design
+ClusterHire is a full-stack hiring intelligence platform designed to make candidate discovery and ranking more transparent, explainable, and configurable.
 
-- Glassmorphism aesthetic: frosted cards, backdrop blur, teal accent
-- Palette: teal (primary), near-black text, off-white/teal-tinted gradient background
-- Mobile-first responsive layout throughout
+Instead of treating candidate ranking as a black box, ClusterHire evaluates candidates across multiple dimensions, allows recruiters to dynamically adjust ranking priorities, and explains why candidates receive their scores.
 
-## Data model
+## 🚀 Live Demo
 
-- `profiles` — one row per auth user, auto-created via `on_auth_user_created` trigger. Stores full name, job title (with `job_title_other` free-text fallback when "Other" is chosen), company name, industry, size, plus `onboarding_step` (1–3) and `onboarding_completed_at` for resumable onboarding
-- `requisitions` — open roles: `title`, `department`, `hiring_manager`, `status` (open/on_hold/filled/closed), `target_start_date`, `notes`, `is_sample`
-- `candidates` — `name`, `email`, `phone`, `requisition_id`, `source`, `stage` (applied/screen/interview/offer/hired/rejected), `resume_link`, `rating` (1-5), `notes`, `last_activity_at`, `is_sample`
-- `stage_history` — append-only log of stage transitions; written by the `tg_candidate_stage_change` trigger on candidate insert/update
-- `stage_history` — append-only log of stage transitions; written by the `tg_candidate_stage_change` trigger on candidate insert/update
+https://recruit-harmony-desk.lovable.app/
 
-## Security model — single-workspace per user
+## ✨ Key Features
 
-There are **no orgs, no admin/member roles**. Every table has a `user_id uuid` column, and every RLS policy scopes to `auth.uid() = user_id`. One user's requisitions and candidates are never visible to another user.
+### 🧠 Explainable Candidate Ranking
 
-- All `SECURITY DEFINER` and `SECURITY INVOKER` functions pin `search_path = public`
-- `handle_new_user` (SECURITY DEFINER, trigger-only) has `EXECUTE` revoked from `anon` and `authenticated`
-- `seed_sample_data` and `clear_sample_data` are `SECURITY INVOKER` — they run under the caller's RLS and always resolve the user via `auth.uid()`; never trust a client-supplied user id
-- Sample rows are marked `is_sample = true`; the clear function only deletes rows where `is_sample = true` AND `user_id = auth.uid()`
-- The `_authenticated` layout route (`ssr: false`) redirects unauthenticated users to `/auth` before rendering any child route
+ClusterHire ranks candidates using four major dimensions:
 
-## Google OAuth setup
+- Skill Alignment
+- Experience Relevance
+- Skill Recency
+- Evidence Strength
 
-Managed Google OAuth is enabled by default via Lovable Cloud. To use your own Google credentials:
+Each candidate receives an overall weighted score along with an explanation of the factors contributing to that score.
 
-1. Open Lovable Cloud → Users → Authentication Settings → Sign In Methods → Google
-2. Toggle "Use your own credentials"
-3. In Google Cloud Console, create OAuth Client ID (Web application) with the redirect URL shown in Lovable Cloud's Google provider section
-4. Paste the client ID and secret back into Lovable Cloud
+The system can identify:
 
-## Routes
+- Matched skills
+- Skill depth
+- Missing or weak skills
+- Experience relevance
+- Skill recency
+- Evidence gaps
+- Insufficient evidence
 
-**Public**: `/` (landing), `/auth` (sign in / sign up), `/docs`
+The ranking system avoids making unsupported assumptions about a candidate's background.
 
-**Onboarding**: `/onboarding` — 3-step flow shown after signup (personal info → company info → import data or pick sample data). Own auth gate (`ssr: false`), resumable via `profiles.onboarding_step`. The `/_authenticated` gate redirects here whenever `onboarding_completed_at` is null. Sample data no longer seeds automatically — it's an explicit choice on Step 3.
+### ⚖️ Dynamic Ranking Weights
 
-**Authenticated (`/_authenticated/*`)**:
-- `/pipeline` — Kanban board (default view). Desktop drag-and-drop + stage dropdown as touch/mobile fallback. Filter by requisition and source.
-- `/requisitions` — grid of open roles with per-req candidate counts, create/edit/close
-- `/candidates/$id` — full candidate detail with stage history timeline
-- `/analytics` — funnel bar chart, source pie, average time-in-stage, KPIs
-- `/import` — CSV upload with downloadable template, header auto-mapping, preview table
-- `/export` — CSV export of candidates and requisitions
-- `/settings` — profile (full name, role, company, industry, size — all editable), "Connect your tools" (marked Coming soon), clear sample data
+Recruiters can adjust the importance of each ranking dimension using interactive sliders.
 
-## Known gaps
+When the weights change:
 
-- Live LinkedIn/Indeed/ATS connectors are placeholder UI only; import via CSV
-- Drag-and-drop uses native HTML5 events on desktop; touch devices use the stage dropdown
-- Resume storage is a link field, not file upload
-- No email notifications, no team invites (intentional — single-user template)
-- Analytics uses whatever `stage_history` currently exists; brand-new accounts show zero time-in-stage until a few transitions happen
+- Candidate scores are recalculated
+- Candidate rankings update dynamically
+- Other weights are automatically rebalanced
+- Ranking movements are displayed
+- The system explains which weighting changes influenced candidate movement
 
-## Remix instructions
+This allows recruiters to adapt the ranking process to different hiring priorities.
 
-**Carries over on remix:**
-- Full schema (enums, tables, triggers, RLS policies, GRANTs)
-- Google OAuth provider config (managed credentials)
-- Seed/clear sample-data helpers
-- All frontend code, design system, and routes
+### 👥 Candidate Comparison
 
-**Does NOT carry over:**
-- Any real candidate or requisition data — remix produces a fresh backend
-- Custom Google OAuth credentials if you supplied your own (re-enter in Cloud settings)
+Compare 2–3 candidates side by side to understand differences in:
 
-## Local development
+- Overall score
+- Skill alignment
+- Experience relevance
+- Skill recency
+- Evidence strength
 
-```bash
-bun install
-bun run dev
-```
+### 📊 Hiring Analytics
 
-The route tree in `src/routeTree.gen.ts` is regenerated automatically by the TanStack Router Vite plugin — do not edit it by hand.
+ClusterHire includes recruitment analytics and hiring funnel views to provide an overview of candidate pipelines and recruitment activity.
+
+### 🔄 Hiring Pipeline
+
+Manage candidates across different stages of the recruitment process with a structured hiring pipeline.
+
+### 🤖 AI-Powered Recruiting Workspace
+
+The platform includes an AI-assisted recruiting workspace designed to support recruiter workflows and candidate discovery.
+
+### 🔐 Authentication
+
+Authenticated access is integrated into the application to provide a structured recruiting workspace.
+
+### 📱 Responsive Interface
+
+The application is designed to work across desktop and mobile screen sizes.
+
+---
+
+## 🏗️ System Architecture
+
+ClusterHire follows a full-stack architecture with the backend serving as the authoritative ranking engine.
+
+```text
+Candidate Data
+      ↓
+Candidate Mapping / Data Access
+      ↓
+Ranking Engine
+      ↓
+Feature & Evidence Analysis
+      ↓
+Weighted Candidate Score
+      ↓
+Candidate Ranking
+      ↓
+Percentile / Tier
+      ↓
+Explainability & Ranking Movement
+      ↓
+Frontend Visualization
